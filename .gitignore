@@ -6,3 +6,5 @@
 /.idea
 /output/*
 /work
+__pycache__
+mglearn
