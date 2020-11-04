@@ -6,6 +6,14 @@ Example:
 
 ![Example output](https://github.com/sophiahadash/argueview/blob/master/screenshots/scr1.png?raw=true)
 
+
+The procedure for creating ArgueView explanations is as follows:
+1. A traditional machine-learning context is created (i.e. data, model)
+2. An explainer is employed to produce *feature importance*. This can be a white-box or black-box explainer. An example of a black-box explainer is [LIME](https://github.com/marcotcr/lime).
+3. The machine-learning context and the *feature importance* are given to ArgueView such that it can produce a textual explanation.
+
+![Procedure visualization](https://github.com/sophiahadash/argueview/blob/master/screenshots/model.png?raw=true)
+
 ### Including in your project
 
 To include this package in your project use your python dependency management tool to import this repo. Example using `pipenv`:
