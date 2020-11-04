@@ -2,7 +2,7 @@
 
 ArgueView is a tool for generating text-based presentations for machine-learning predictions and feature-importance based explanation tools. The tool makes use of Toulmin's model of argumentation for structuring the text-based explanations.
 
-Example:
+Example output:
 
 ![Example output](https://github.com/sophiahadash/argueview/blob/master/screenshots/scr1.png?raw=true)
 
@@ -14,31 +14,36 @@ The procedure for creating ArgueView explanations is as follows:
 
 ![Procedure visualization](https://github.com/sophiahadash/argueview/blob/master/screenshots/model.png?raw=true)
 
+
+### Running the examples
+
+There are two examples available to help you learn how to use ArgueView. The 'plain' examples uses hypothetical data to show a minimalistic use-case. The CreditG example uses real data and a real ML model to illustrate a real-world use case.
+
+If you would like to run the CreditG example the script needs to obtain the data. For this we used make use of [OpenML](https://www.openml.org/). However, usage requires a valid API key and you will need to obtain one to run the example.
+
+After you have obtained your key, create a `.env` file with your [OpenML](https://www.openml.org/) API key. 
+
+```
+echo "OML_APIKEY={my-key}" > .env
+```
+*Note: You can skip this step if you want to run the hypothetical example.*
+
+Install all dependencies:
+
+```
+pipenv install --dev
+```
+
+Run an example:
+
+```
+/path/to/python3 ./examples/{example}/example.py
+```
+
 ### Including in your project
 
 To include this package in your project use your python dependency management tool to import this repo. Example using `pipenv`:
 
 ```
 pipenv install -e git+https://github.com/SophiaHadash/ArgueView@{commit}
-```
-
-
-### Running the example
-
-Create a `.env` file with your OpenML API key:
-
-```
-echo "OML_APIKEY={my-key}" > .env
-```
-
-Install all dependencies
-
-```
-pipenv install --dev
-```
-
-Run the example
-
-```
-/path/to/python3 ./examples/example.py
 ```
