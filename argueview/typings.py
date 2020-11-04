@@ -173,7 +173,7 @@ class Explanation(DummyUpdater):
         str_post = '  |'
         str_class = Color.BOLD + 'class: ' + Color.END + dclass
         str_lrat = Color.BOLD + 'leading rationale: ' + Color.END + lrat
-        str_qualifier = Color.BOLD + "qualifier: " + Color.END + "The class '" + dclass + "' is {:.0f}% more certain thant the other possible classes.".format(
+        str_qualifier = Color.BOLD + "qualifier: " + Color.END + "The class '" + dclass + "' is {:.0f}% more certain than the other possible classes.".format(
             100 * self.case.qualifier())
         str_backing = Color.BOLD + 'backing: ' + Color.END + self.backing
 
