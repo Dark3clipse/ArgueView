@@ -117,17 +117,9 @@ class ExplanationPartial(DummyUpdater):
         return None
 
 
-class color:
-   PURPLE = '\033[95m'
-   CYAN = '\033[96m'
-   DARKCYAN = '\033[36m'
-   BLUE = '\033[94m'
-   GREEN = '\033[92m'
-   YELLOW = '\033[93m'
-   RED = '\033[91m'
-   BOLD = '\033[1m'
-   UNDERLINE = '\033[4m'
-   END = '\033[0m'
+class Color:
+    BOLD = '\033[1m'
+    END = '\033[0m'
 
 
 class Explanation(DummyUpdater):
@@ -154,14 +146,14 @@ class Explanation(DummyUpdater):
         else:
             return val
 
-
-    def _print_multiline(self, inpstr: str, str_pre: str, str_post: str, str_max_length: int, max_length: int, cl: int):
-        if len(inpstr)-cl <= max_length:
+    def _print_multiline(self, inpstr: str, str_pre: str, str_post: str, str_max_length: int, max_length: int, cl: int) -> None:
+        if len(inpstr) - cl <= max_length:
             print(str_pre + inpstr + ' ' * (str_max_length - len(inpstr) + cl) + str_post)
         else:
             inpstr_lines = textwrap.wrap(inpstr, max_length)
             for i in range(0, len(inpstr_lines)):
-                print(str_pre + inpstr_lines[i] + ' ' * (str_max_length - len(inpstr_lines[i]) + (cl if i == 0 else 0)) + str_post)
+                print(str_pre + inpstr_lines[i] + ' ' * (
+                            str_max_length - len(inpstr_lines[i]) + (cl if i == 0 else 0)) + str_post)
 
     def print(self) -> None:
 
@@ -179,15 +171,15 @@ class Explanation(DummyUpdater):
         str_header = '-- Explanation '
         str_pre = '|  '
         str_post = '  |'
-        str_class = color.BOLD + 'class: ' + color.END + dclass
-        str_lrat = color.BOLD + 'leading rationale: ' + color.END + lrat
-        str_qualifier = color.BOLD + "qualifier: "+color.END+"The class '" + dclass + "' is {:.0f}% more certain thant the other possible classes.".format(
+        str_class = Color.BOLD + 'class: ' + Color.END + dclass
+        str_lrat = Color.BOLD + 'leading rationale: ' + Color.END + lrat
+        str_qualifier = Color.BOLD + "qualifier: " + Color.END + "The class '" + dclass + "' is {:.0f}% more certain thant the other possible classes.".format(
             100 * self.case.qualifier())
-        str_backing = color.BOLD + 'backing: ' + color.END + self.backing
+        str_backing = Color.BOLD + 'backing: ' + Color.END + self.backing
 
         # print explanation
         max_length = 120
-        cl = len(color.BOLD)+len(color.END)
+        cl = len(Color.BOLD) + len(Color.END)
         str_max_length = min(max_length, max(len(str_class), len(str_lrat), len(str_qualifier), len(str_backing)))
         print('\n' + str_header + '-' * (str_max_length - len(str_header) + len(str_pre) + len(str_post)))
         self._print_multiline(str_class, str_pre, str_post, str_max_length, max_length, cl)
@@ -214,7 +206,8 @@ class Explanation(DummyUpdater):
             vals_max_length = max(map(lambda x: len(x), vals))
             content = []
             for j in range(0, len(names)):
-                content.append(names[j] + ' ' * (names_max_length - len(names[j])) + ' = ' + vals[j] + ' ' * (vals_max_length - len(vals[j])) + ' , contribution = ' + cont[j])
+                content.append(names[j] + ' ' * (names_max_length - len(names[j])) + ' = ' + vals[j] + ' ' * (
+                            vals_max_length - len(vals[j])) + ' , contribution = ' + cont[j])
             str_max_length = max(map(lambda x: len(x), content))
 
             # sort based on contribution

@@ -2,6 +2,9 @@
 
 ArgueView is a tool for generating text-based presentations for machine-learning predictions and feature-importance based explanation tools. The tool makes use of Toulmin's model of argumentation for structuring the text-based explanations.
 
+Example presentation:
+[Example output](./screenshots/scr1.png)
+
 ### Including in your project
 
 To include this package in your project use your python dependency management tool to import this repo. Example using `pipenv`:
