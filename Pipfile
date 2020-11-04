@@ -1,0 +1,18 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pandas = "~=1.1.4"
+scikit-learn = "~=0.23.2"
+lime = {editable = true, git = "https://github.com/marcotcr/lime", ref = "0d1a635f8d9e935c596967caaea32deca8c9099c"}
+openml = "~=0.11.0"
+python-dotenv = "~=0.15.0"
+
+[packages]
+numpy = "~=1.19.3"
+scipy = "==1.5.3"
+
+[requires]
+python_version = ">=3.6"
