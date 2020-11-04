@@ -19,7 +19,7 @@ The procedure for creating ArgueView explanations is as follows:
 
 There are two examples available to help you learn how to use ArgueView. The 'plain' examples uses hypothetical data to show a minimalistic use-case. The CreditG example uses real data and a real ML model to illustrate a real-world use case.
 
-If you would like to run the CreditG example the script needs to obtain the data. For this we used make use of [OpenML](https://www.openml.org/). However, usage requires a valid API key and you will need to obtain one to run the example.
+If you would like to run the CreditG example the script needs to obtain the data. For this we use [OpenML](https://www.openml.org/). However, usage requires a valid API key and you will need to obtain one to run the example.
 
 After you have obtained your key, create a `.env` file with your [OpenML](https://www.openml.org/) API key. 
 
