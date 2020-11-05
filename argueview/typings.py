@@ -178,7 +178,7 @@ class Explanation(DummyUpdater):
         str_backing = Color.BOLD + 'backing: ' + Color.END + self.backing
 
         # print explanation
-        max_length = 120
+        max_length = 80
         cl = len(Color.BOLD) + len(Color.END)
         str_max_length = min(max_length, max(len(str_class), len(str_lrat), len(str_qualifier), len(str_backing)))
         print('\n' + str_header + '-' * (str_max_length - len(str_header) + len(str_pre) + len(str_post)))
