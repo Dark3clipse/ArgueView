@@ -260,7 +260,7 @@ class ArgueViewExample:
         print('case: '+str(case_id))
 
         # step 4: use an explainer to generate feature importance for each source (in our example we have one source)
-        feature_importance = self.explainer(case_id)[1]
+        feature_importance = self.explainer(case_id)
 
         # step 5: build argumentation model
         argView = self.buildArgViewModel()

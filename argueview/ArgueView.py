@@ -1,4 +1,4 @@
-from typing import List, Union
+from typing import List, Union, Dict
 from argueview.typings import Source, Explanation, Case, Data, ExplanationPartial, FeatureExplanation, Grounds, \
     GroundsVarByClass, FeatureImportance, Feature
 
@@ -51,6 +51,16 @@ class ArgueView:
         self._backing = backing
 
     def grounds(self, grounds: Grounds, grounds_var_by_class: GroundsVarByClass) -> None:
+        """Define grounds for the rationale of how each feature affects the decision-class.
+
+        The grounds describe how features affect the decision in each possible decision-class. The grounds can contain
+        tokens that should be replaced based on the feature value. The token used for this is `<>`.
+
+        :param  grounds: Contains for each feature the rationale for each decision class. The format is List[List[str]] where the outer list represents each feature and the inner list each decision-class.
+        :param  grounds_var_by_class:
+        :return:
+        """
+
         self._grounds = grounds
         self._grounds_vars = grounds_var_by_class
 
@@ -96,7 +106,7 @@ class ArgueView:
             "attack": negative
         })
 
-    def generate(self, case: Case, feature_importance: Union[FeatureImportance, List[FeatureImportance]]) -> Explanation:
+    def generate(self, case: Case, feature_importance: Union[FeatureImportance, List[FeatureImportance], Dict[int, List[FeatureImportance]]]) -> Explanation:
         pre = 'cannot generate explanation: '
         if not self._classes:
             raise Exception(pre+'no classes defined. Use ArgueView.classes to set your classes.')
@@ -107,8 +117,14 @@ class ArgueView:
         if not self._sources or len(self._sources) <= 0:
             raise Exception(pre+'no data sources defined. Use ArgueView.add_data_source to add a data source.')
 
+        if isinstance(feature_importance, dict):
+            self._fimportance = [feature_importance[1]] # LIME default format
+        elif not isinstance(feature_importance[0], list):
+            self._fimportance = [feature_importance] # single list -> single source case
+        else:
+            self._fimportance = feature_importance # input properly formatted
+
         self._case = case
-        self._fimportance = feature_importance if isinstance(feature_importance[0], list) else [feature_importance]
         self._generateExplanationPartial()
         _gen = Explanation()
 
