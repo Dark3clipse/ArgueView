@@ -18,7 +18,7 @@ class ArgueView:
     _grounds_vars: GroundsVarByClass
 
     _case: Case
-    _fimportance: FeatureImportance
+    _fimportance: List[FeatureImportance]
     _gen: Explanation
 
     _expPartial: ExplanationPartial
