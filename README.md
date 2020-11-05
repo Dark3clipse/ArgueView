@@ -40,6 +40,8 @@ Run an example:
 /path/to/python3 ./examples/{example}/example.py
 ```
 
+Additionally, there is a Jupyther Notebook available to directly see how ArgueView works. Check it out [here](https://github.com/SophiaHadash/ArgueView/blob/master/examples/creditg_lime/example.ipynb).
+
 ### Including in your project
 
 To include this package in your project use your python dependency management tool to import this repo. Example using `pipenv`:
