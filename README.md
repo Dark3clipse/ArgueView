@@ -23,17 +23,21 @@ ArgueView is available as a python package on [PyPi](https://pypi.org/manage/pro
 pip install argueview
 ```
 
-## Building
+Or, using `pipenv`:
 
-Follow these steps to build ArgueView from source.
+```
+pipenv install argueview
+```
 
-- make sure you install the dependencies. ArgueView requires the following dependencies: `python>=3.5`, `pip3`, `pipenv`, `git`.
+## Usage
 
-### Using Docker
+Usage is documented in our examples. Examples are available in python and jupyter notebooks. The following examples are available:
 
-Alternatively you can build ArgueView using docker.
+- minimal, hypothetical data and explainer: [python](https://github.com/SophiaHadash/ArgueView/blob/master/examples/fruit_plain/example.py)
+- creditg data with [LIME](https://github.com/marcotcr/lime) explainer: [python](https://github.com/SophiaHadash/ArgueView/blob/master/examples/creditg_lime/example.py), [notebook](https://github.com/SophiaHadash/ArgueView/blob/master/examples/creditg_lime/example.ipynb)
+- creditg data with [shap](https://github.com/slundberg/shap) explainer: [python](https://github.com/SophiaHadash/ArgueView/blob/master/examples/creditg_shap/example.py), [notebook](https://github.com/SophiaHadash/ArgueView/blob/master/examples/creditg_shap/example.ipynb)
 
-### Running the examples
+## Running the examples
 
 There are two examples available to help you learn how to use ArgueView. The 'plain' examples uses hypothetical data to show a minimalistic use-case. The CreditG example uses real data and a real ML model to illustrate a real-world use case.
 
@@ -58,12 +62,35 @@ Run an example:
 /path/to/python3 ./examples/{example}/example.py
 ```
 
-Additionally, there is a Jupyther Notebook available to directly see how ArgueView works. Check it out [here](https://github.com/SophiaHadash/ArgueView/blob/master/examples/creditg_lime/example.ipynb).
+Additionally, there is are Jupyther Notebooks available to directly see how ArgueView works.
 
-### Including in your project
+## Building
 
-To include this package in your project use your python dependency management tool to import this repo. Example using `pipenv`:
+Follow these steps to build ArgueView from source.
 
-```
-pipenv install -e git+https://github.com/SophiaHadash/ArgueView@{commit}
-```
+- make sure you install the dependencies. ArgueView requires the following dependencies: `python>=3.5`, `pip3`, `pipenv`, `git`.
+- build using make
+    ``` 
+    make
+    ```
+
+### Using Docker
+
+Alternatively you can build ArgueView using docker.
+
+- build context dockerfile
+    ```
+    docker build -t argueview/context:local .
+    ```
+- run `build.sh` in a container
+    ```
+    CID=$(docker run 
+        -v /var/run/docker.sock:/var/run/docker.sock
+        argueview/context
+        build.sh)
+    ```
+- copy results from the container
+    ```
+    docker cp ${CID}:/argueview/argueview.egg-info ./argueview.egg-info
+    docker cp ${CID}:/argueview/build ./build
+    ```
