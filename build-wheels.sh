@@ -16,10 +16,7 @@ yum install -y atlas-devel
 
 # Compile wheels
 for PYBIN in /opt/python/*/bin; do
-    "${PYBIN}/pip" install pipenv
-    cd /io
-    "${PYBIN}/pipenv" install --deploy
-    "${PYBIN}/pip" wheel /io/ --no-deps -w wheelhouse/
+    "${PYBIN}/pip" wheel /io/ -w wheelhouse/
 done
 
 # Bundle external shared libraries into the wheels

@@ -3,7 +3,7 @@ MAINTAINER Sophia Hadash <s.hadash@tue.nl>
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -qqy && \
-	apt-get install software-properties-common git python3.6 python3-pip build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget -qqy && \
+	apt-get install software-properties-common git python3.6 python3-pip build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget twine -qqy && \
 	pip3 install pipenv
 
 # install docker
