@@ -1,23 +1,26 @@
 import json
 import os
-import lime
-import lime.lime_tabular
 import numpy as np
 import openml as oml
 import pandas as pd
 import requests
 from openml import OpenMLDataset
+import shap
+from shap import Explanation
+
 import settings
-from typing import Dict
+from typing import List, Tuple
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import *
 from sklearn.model_selection import *
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import *
-from argueview.typings import Source, OpenMLFeatureData, Case, CaseSource, CaseFeature, FeatureImportance
+
+from argueview.helper import feature_importance_from_shap
+from argueview.typings import Source, OpenMLFeatureData, Case, CaseSource, CaseFeature
 from examples.Dataset import Dataset
 from argueview import *
-from argueview.helper import feature_importance_from_lime
+
 
 
 # set OpenML API Key
@@ -129,22 +132,18 @@ class ArgueViewExample:
         df = pd.DataFrame(data=self.dataset.X_test[case], index=self.dataset.F, columns=['values'])
         print(df)
 
-    def explainer(self, case: int) -> Dict[int, FeatureImportance]:
-        explainer = lime.lime_tabular.LimeTabularExplainer(self.dataset.X_train,
-                                                           feature_names=self.dataset.F,
-                                                           class_names=self.dataset.y_labels,
-                                                           discretize_continuous=True)
+    def explainer(self) -> Explanation:
 
-        # generate explanation
-        exp = explainer.explain_instance(self.dataset.X_test[case],
-                                         self.dataset.m.predict_proba,
-                                         num_features=len(self.dataset.F))
+        def custom_masker(mask, x):
+            return (x * mask).reshape(1, len(x))
 
-        # save
-        exp.save_to_file("output/lime.html")
+        explainer = shap.explainers.Permutation(self.dataset.m.predict_proba, custom_masker)
+        explainer.feature_names = self.dataset.F
+        explainer.output_names = self.dataset.y_labels
 
-        # get feature importance
-        return exp.as_map()
+        shap_values = explainer(self.dataset.X)
+
+        return shap_values
 
     def buildArgViewModel(self) -> ArgueView:
 
@@ -258,8 +257,8 @@ class ArgueViewExample:
         print('case: '+str(case_id))
 
         # step 4: use an explainer to generate feature importance for each source (in our example we have one source)
-        fmap = self.explainer(case_id)
-        feature_importance, unexplained = feature_importance_from_lime(fmap, case)
+        shap_values = self.explainer()
+        feature_importance, unexplained = feature_importance_from_shap(shap_values, case)
 
         # step 5: build argumentation model
         argView = self.buildArgViewModel()

@@ -1,6 +1,5 @@
 from argueview import ArgueView
-from argueview.typings import Source, Feature, Case, CaseSource, CaseFeature
-
+from argueview.typings import Source, Feature, Case, CaseSource, CaseFeature, FeatureImportance
 
 # create argueview instance
 argView = ArgueView()
@@ -51,6 +50,7 @@ argView.grounds([['Shape is less spherical', 'Shape is more spherical'],
 
 # define a hypothetical case
 case = Case({
+    "id": 0,
     "class_proba": [.05, .95],
     "sources": [CaseSource({
         "features": [CaseFeature({
@@ -62,10 +62,13 @@ case = Case({
 })
 
 # define some hypothetical feature-importance mapping
-feature_importance = [(0, .123465), (1, .845211)]
+feature_importance = FeatureImportance([(0, .1), (1, .7)])
+
+# unexplained contribution
+unexplained = .15 # = class probability - sum(feature_importance_contributions) = .95 - .7 - .1
 
 # generate explanation
-explanation = argView.generate(case, feature_importance)
+explanation = argView.generate(case, feature_importance, unexplained)
 
 # print
 explanation.print()

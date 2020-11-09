@@ -1,4 +1,4 @@
-from typing import List, Union, Dict
+from typing import List, Union, Dict, Tuple
 from argueview.typings import Source, Explanation, Case, Data, ExplanationPartial, FeatureExplanation, Grounds, \
     GroundsVarByClass, FeatureImportance, Feature
 
@@ -19,6 +19,7 @@ class ArgueView:
 
     _case: Case
     _fimportance: List[FeatureImportance]
+    _unexplained: float
     _gen: Explanation
 
     _expPartial: ExplanationPartial
@@ -103,10 +104,11 @@ class ArgueView:
                 }))
         self._expPartial = ExplanationPartial({
             "support": positive,
-            "attack": negative
+            "attack": negative,
+            "base": self._unexplained
         })
 
-    def generate(self, case: Case, feature_importance: Union[FeatureImportance, List[FeatureImportance], Dict[int, List[FeatureImportance]]]) -> Explanation:
+    def generate(self, case: Case, feature_importance: Union[FeatureImportance, List[FeatureImportance]], unexplained: float = 0) -> Explanation:
         pre = 'cannot generate explanation: '
         if not self._classes:
             raise Exception(pre+'no classes defined. Use ArgueView.classes to set your classes.')
@@ -117,12 +119,11 @@ class ArgueView:
         if not self._sources or len(self._sources) <= 0:
             raise Exception(pre+'no data sources defined. Use ArgueView.add_data_source to add a data source.')
 
-        if isinstance(feature_importance, dict):
-            self._fimportance = [feature_importance[1]] # LIME default format
-        elif not isinstance(feature_importance[0], list):
+        if not isinstance(feature_importance[0], list):
             self._fimportance = [feature_importance] # single list -> single source case
         else:
             self._fimportance = feature_importance # input properly formatted
+        self._unexplained = unexplained
 
         self._case = case
         self._generateExplanationPartial()
