@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+# import environment if exists
 if test -f ".env"; then
   export $(cat .env | xargs)
 fi

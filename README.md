@@ -15,6 +15,23 @@ The procedure for creating ArgueView explanations is as follows:
 
 ![Procedure visualization](https://github.com/sophiahadash/argueview/blob/master/screenshots/model.png?raw=true)
 
+## Installation
+
+ArgueView is available as a python package on [PyPi](https://pypi.org/manage/projects/argueview). You can install it using `pip`:
+
+```
+pip install argueview
+```
+
+## Building
+
+Follow these steps to build ArgueView from source.
+
+- make sure you install the dependencies. ArgueView requires the following dependencies: `python>=3.5`, `pip3`, `pipenv`, `git`.
+
+### Using Docker
+
+Alternatively you can build ArgueView using docker.
 
 ### Running the examples
 
