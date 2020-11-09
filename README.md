@@ -32,7 +32,7 @@ Install all dependencies:
 
 ```
 pipenv install --dev
-```~~~~
+```
 
 Run an example:
 
