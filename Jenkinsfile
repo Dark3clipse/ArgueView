@@ -22,7 +22,7 @@ pipeline {
   stages {
     stage('test build context') {
       steps {
-		sh 'python --version && docker --version && docker-compose --version'
+		sh 'python --version'
       }
     }
     stage('build') {
