@@ -14,7 +14,6 @@ pipeline {
   agent {
     dockerfile {
     	dir '.'
-    	label 'argueview/context'
     	args '-v /var/run/docker.sock:/var/run/docker.sock'
     }
   }
