@@ -12,8 +12,11 @@ def buildBadge = addEmbeddableBadgeConfiguration(id: "build", subject: "ArgueVie
 
 pipeline {
   agent {
-    dockerfile true
-    args '-v /var/run/docker.sock:/var/run/docker.sock'
+    dockerfile {
+    	dir '.'
+    	label 'argueview/context'
+    	args '-v /var/run/docker.sock:/var/run/docker.sock'
+    }
   }
   options {
 	skipStagesAfterUnstable()
