@@ -39,7 +39,7 @@ pipeline {
       }
 	  steps {
 	    sh 'printf "[pypi]\nusername = __token__\npassword = ${TWINE_PASSWORD}" > ~/.pypirc'
-		sh 'twine upload -r argueview ./dist/*'
+		sh 'twine upload ./dist/*'
 	  }
 	}
   }
