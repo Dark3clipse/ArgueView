@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    install_requires=["numpy==1.19.4", "scipy==1.5.3"],
+    install_requires=["numpy==1.19.4", "scipy==1.5.4"],
     name="argueview",
     version="0.0.1",
     author="Sophia Hadash",
@@ -24,5 +24,5 @@ setup(
         "Development Status :: 3 - Alpha",
     ],
     keywords="explanations, text, toulmin, argumentation",
-    python_requires=">=3.6",
+    python_requires=">=3.5",
 )

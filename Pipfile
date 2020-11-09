@@ -9,14 +9,14 @@ scikit-learn = "~=0.23.2"
 lime = {editable = true, git = "https://github.com/marcotcr/lime", ref = "0d1a635f8d9e935c596967caaea32deca8c9099c"}
 openml = "~=0.11.0"
 python-dotenv = "~=0.15.0"
-jupyter = "==1.0.0"
-shap = "==0.37.0"
-pipenv-setup = "==3.1.1"
+jupyter = "~=1.0.0"
+shap = "~=0.37.0"
+pipenv-setup = "~=3.1.1"
 wheel = "*"
 
 [packages]
-numpy = "~=1.19.3"
-scipy = "~=1.5.3"
+numpy = "~=1.18"
+scipy = "~=1.4"
 
 [requires]
-python_version = ">=3.6"
+python_version = ">=3.5"
