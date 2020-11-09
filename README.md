@@ -1,5 +1,5 @@
 # ArgueView
-![Build Status](https://jenkins.tuneblendr.com/job/ArgueView/job/master/badge/icon?style=flat&link=https%3A%2F%2Fjenkins.tuneblendr.com%2Fblue%2Forganizations%2Fjenkins%2FTuneblendr%2Factivity "Build Status")
+[![Build Status](https://jenkins.tuneblendr.com/job/ArgueView/job/master/badge/icon?style=flat&link=https%3A%2F%2Fjenkins.tuneblendr.com%2Fblue%2Forganizations%2Fjenkins%2FTuneblendr%2Factivity "Build Status")](https://jenkins.tuneblendr.com/blue/organizations/jenkins/ArgueView/activity)
 
 ArgueView is a tool for generating text-based presentations for machine-learning predictions and feature-importance based explanation tools. The tool makes use of Toulmin's model of argumentation for structuring the text-based explanations.
 
