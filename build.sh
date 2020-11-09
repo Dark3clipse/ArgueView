@@ -2,6 +2,7 @@
 set -e
 pipenv-setup sync
 python3 setup.py sdist
+python setup.py bdist_wheel
 
 DOCKER_IMAGE=quay.io/pypa/manylinux2014_x86_64
 PLAT=manylinux1_x86_64
