@@ -93,4 +93,5 @@ Alternatively you can build ArgueView using docker.
     ```
     docker cp ${CID}:/argueview/argueview.egg-info ./argueview.egg-info
     docker cp ${CID}:/argueview/build ./build
+    docker cp ${CID}:/argueview/dist ./dist
     ```

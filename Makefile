@@ -1,2 +1,2 @@
-argueview.egg-info build/:argueview
+argueview.egg-info build/ dist/:argueview
 	bash build.sh

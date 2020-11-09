@@ -38,7 +38,8 @@ pipeline {
         branch 'master'
       }
 	  steps {
-		sh 'twine upload --username __token__ -r argueview ./dist/*'
+	    sh 'printf "[pypi]\nusername = __token__\npassword = ${TWINE_PASSWORD}" > ~/.pypirc'
+		sh 'twine upload -r argueview ./dist/*'
 	  }
 	}
   }
