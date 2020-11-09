@@ -10,4 +10,5 @@ argueview/helper/__pycache__/
 mglearn
 argueview.egg-info
 build
+dist
 wheelhouse

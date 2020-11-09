@@ -38,7 +38,7 @@ pipeline {
         branch 'master'
       }
 	  steps {
-		sh 'twine upload --username __token__ -r argueview ./wheelhouse/*'
+		sh 'twine upload --username __token__ -r argueview ./dist/*'
 	  }
 	}
   }

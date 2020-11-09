@@ -12,7 +12,5 @@ pipenv-setup sync
 # build source egg
 python3 setup.py sdist
 
-# build wheels
-DOCKER_IMAGE=quay.io/pypa/manylinux2014_x86_64
-PLAT=manylinux2014_x86_64
-docker run --rm -e PLAT=$PLAT -v `pwd`:/io $DOCKER_IMAGE $PRE_CMD /io/build-wheels.sh
+# build wheel
+python3 setup.py sdist bdist_wheel
