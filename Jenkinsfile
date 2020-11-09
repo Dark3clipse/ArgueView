@@ -20,7 +20,7 @@ pipeline {
   stages {
     stage('test build context') {
       steps {
-		sh 'python --version && pip --version && pipenv --version'
+		sh 'python3 --version && pip --version && pipenv --version'
       }
     }
     stage('build') {

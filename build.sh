@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
 pipenv-setup sync
-python setup.py sdist
+python3 setup.py sdist
