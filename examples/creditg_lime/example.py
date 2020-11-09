@@ -155,7 +155,7 @@ class ArgueViewExample:
         argView.classes(["You are applicable for a loan.", "You are not applicable for a loan."])
 
         # set a backing
-        argView.backing("This decision is supported by Jheronimus Academy of Data Science, who have employed the automatic decision-making model RF-LOAN. This model is correct for 73% or the cases and is based on the German Credit dataset. This dataset is collected in 1994 by Dr. Hans Hofmann of Universität Hamburg, Institut für Statistik und Ökonometrie. The RF-LOAN model is developed by Sophia Hadash, who has been active in decision-making model development since 2017.")
+        argView.backing("Supported by Sophia Hadash, MSc from Jheronimus Academy of Data Science.")
 
         # add the data source
         argView.add_data_source(Source({

@@ -8,7 +8,7 @@ argView = ArgueView()
 argView.classes(['pear', 'orange'])
 
 # set a backing
-argView.backing('Classifier by Sophia Hadash, MSc.')
+argView.backing('Supported by Sophia Hadash, MSc from Jheronimus Academy of Data Science.')
 
 # add a data source
 argView.add_data_source(Source({
