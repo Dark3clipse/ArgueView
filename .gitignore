@@ -2,8 +2,9 @@
 /cache
 /.mypy_cache
 /output/*
-/__pycache__
+__pycache__/
+argueview/__pycache__/
+argueview/helper/__pycache__/
 /.idea
 /work
-__pycache__
 mglearn
