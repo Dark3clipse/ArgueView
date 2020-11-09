@@ -12,9 +12,7 @@ def buildBadge = addEmbeddableBadgeConfiguration(id: "build", subject: "ArgueVie
 
 pipeline {
   agent {
-    docker {
-      image 'python:3.6.12'
-    }
+    dockerfile true
   }
   options {
 	skipStagesAfterUnstable()
@@ -22,7 +20,7 @@ pipeline {
   stages {
     stage('test build context') {
       steps {
-		sh 'python --version'
+		sh 'python --version && pip --version && pipenv --version'
       }
     }
     stage('build') {
