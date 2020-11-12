@@ -98,14 +98,14 @@ class ArgueView:
                     valence = positive
                 valence.append(FeatureExplanation({
                     "source": i,
-                    "feature": t[0],
-                    "contribution": t[1],
+                    "feature": int(t[0]),
+                    "contribution": float(t[1]),
                     "value": self._compile(decision, i, t[0])
                 }))
         self._expPartial = ExplanationPartial({
             "support": positive,
             "attack": negative,
-            "base": self._unexplained
+            "base": float(self._unexplained)
         })
 
     def generate(self, case: Case, feature_importance: Union[FeatureImportance, List[FeatureImportance]], unexplained: float = 0) -> Explanation:

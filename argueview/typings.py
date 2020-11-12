@@ -1,6 +1,7 @@
 import json
 import textwrap
 from typing import List, Union, NewType, Tuple
+import jsonpickle
 
 
 class DummyUpdater(object):
@@ -138,7 +139,7 @@ class Explanation(DummyUpdater):
 
     def save(self, fname: str) -> None:
         json_out = open(fname, 'w')
-        json_out.write(json.dumps(self, indent=1, sort_keys=True))
+        json_out.write(jsonpickle.encode(self, unpicklable=False))
         json_out.close()
 
     def feature_value(self, source: int, feature: int) -> Union[str, int, float]:
