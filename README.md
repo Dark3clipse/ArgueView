@@ -3,8 +3,11 @@
 
 ArgueView is a tool for generating text-based presentations for machine-learning predictions and feature-importance based explanation tools. The tool makes use of Toulmin's model of argumentation for structuring the text-based explanations.
 
-Example output:
+Example output using the visualizer:
 
+![Example Visualization](https://github.com/sophiahadash/argueview/blob/master/screenshots/toulmin-visualizer.png?raw=true)
+
+Example ASCII output:
 ![Example output](https://github.com/sophiahadash/argueview/blob/master/screenshots/scr1.png?raw=true)
 
 
