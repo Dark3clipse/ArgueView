@@ -38,8 +38,14 @@ pipeline {
         branch 'master'
       }
 	  steps {
-	    sh 'printf "[pypi]\nusername = __token__\npassword = ${TWINE_PASSWORD}" > ~/.pypirc'
-		sh 'twine upload ./dist/*'
+	    script {
+	      try {
+	        sh 'printf "[pypi]\nusername = __token__\npassword = ${TWINE_PASSWORD}" > ~/.pypirc'
+		    sh 'twine upload ./dist/*'
+	      } catch(err) {
+	        echo err.getMessage()
+	      }
+	    }
 	  }
 	}
   }
