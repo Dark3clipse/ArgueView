@@ -20,7 +20,7 @@ The procedure for creating ArgueView explanations is as follows:
 
 ## Installation
 
-ArgueView is available as a python package on [PyPi](https://pypi.org/manage/projects/argueview). You can install it using `pip`:
+ArgueView is available as a python package on [PyPi](https://pypi.org/project/argueview/). You can install it using `pip`:
 
 ```
 pip install argueview

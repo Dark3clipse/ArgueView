@@ -1,5 +1,5 @@
-import json
 import textwrap
+from random import random
 from typing import List, Union, NewType, Tuple
 import jsonpickle
 
@@ -137,9 +137,12 @@ class Explanation(DummyUpdater):
     data: Data
     explanation: ExplanationPartial
 
+    def serialize(self) -> str:
+        return jsonpickle.encode(self, unpicklable=False)
+
     def save(self, fname: str) -> None:
         json_out = open(fname, 'w')
-        json_out.write(jsonpickle.encode(self, unpicklable=False))
+        json_out.write(self.serialize())
         json_out.close()
 
     def feature_value(self, source: int, feature: int) -> Union[str, int, float]:

@@ -1,0 +1,36 @@
+{
+  "name": "argueview-python",
+  "version": "0.1.0",
+  "description": "Python interface for argueview-js.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config build/webpack.dev.js && webpack --config build/webpack.prod.js && cp dist/bundle.min.js ./../argueview/visualizers/resources/bundle.min.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sophia Hadash <s.hadash@tue.nl>",
+  "license": "ISC",
+  "browserslist": [
+    "defaults",
+    "not IE 11",
+    "not IE_Mob 11",
+    "maintained node versions"
+  ],
+  "dependencies": {
+    "argueview-js": "^0.2.0",
+    "core-js": "^3.7.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "regenerator-runtime": "^0.13.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.5",
+    "babel-loader": "^8.2.1",
+    "babel-preset-minify": "^0.5.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.5.1",
+    "webpack-cli": "^4.2.0",
+    "webpack-merge": "^5.4.0"
+  }
+}

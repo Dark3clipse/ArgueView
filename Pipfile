@@ -18,6 +18,7 @@ wheel = "*"
 numpy = "~=1.18"
 scipy = "~=1.4"
 jsonpickle = "==1.4.1"
+ipython = "==7.19.0"
 
 [requires]
 python_version = ">=3.5"
