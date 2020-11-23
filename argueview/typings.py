@@ -150,8 +150,12 @@ class Explanation(DummyUpdater):
     def serialize(self) -> str:
         return jsonpickle.encode(self, unpicklable=False)
 
-    def save(self, fname: str) -> None:
+    def save(self, fname: str, pretty: bool = True) -> None:
         json_out = open(fname, 'w')
+        if pretty:
+            jsonpickle.set_encoder_options('json', indent=4)
+        else:
+            jsonpickle.set_encoder_options('json')
         json_out.write(self.serialize())
         json_out.close()
 

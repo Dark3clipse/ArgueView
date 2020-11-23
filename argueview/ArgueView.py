@@ -38,7 +38,7 @@ class ArgueView:
         :param  classes: Array of textual representations for your decision-classes.
         :return:
         """
-        if self._lct and len(self._lct.mapping) != len(classes):
+        if hasattr(self, '_lct') and len(self._lct.mapping) != len(classes):
             raise Exception('The number of classes should match the length of the defined latent continuous target mapping.')
         self._classes = classes
 
@@ -55,13 +55,13 @@ class ArgueView:
         :param mapping: List of values representing the value of the latent target for each decision-class.
         :return:
         """
-        if self._classes and len(self._classes) != len(mapping):
+        if hasattr(self, '_classes') and len(self._classes) != len(mapping):
             raise Exception('Length of mapping should match the number of classes.')
         self._lct = LatentContinuousTarget({
             label: label,
-            anti_label: anti_label,
-            mapping: mapping
+            anti_label: anti_label
         })
+        self._lct.mapping = mapping
 
     def backing(self, backing: str) -> None:
         """Defines textual backing to support your decisions.

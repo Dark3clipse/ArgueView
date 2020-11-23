@@ -268,8 +268,9 @@ class ArgueViewExample:
         # step 6: generate explanation
         explanation = argView.generate(case, feature_importance, unexplained)
 
-        # print
+        # print and export
         explanation.print()
+        explanation.save('output/explanation.json')
 
     def __init__(self):
         self.example()
