@@ -89,11 +89,21 @@ class Case(DummyUpdater):
         return pos / full_range
 
 
+class LatentContinuousTarget(DummyUpdater):
+    def __init__(self, iterable=(), **kwargs):
+        super().__init__(iterable, **kwargs)
+
+    label: str
+    anti_label: str
+    mapping: List[float]
+
+
 class Data(DummyUpdater):
     def __init__(self, iterable=(), **kwargs):
         super().__init__(iterable, **kwargs)
 
     classes: List[str]
+    latent_continuous_target: LatentContinuousTarget
     sources: List[Source]
 
 

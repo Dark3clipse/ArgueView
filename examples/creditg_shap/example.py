@@ -152,6 +152,7 @@ class ArgueViewExample:
 
         # define decisions-classes
         argView.classes(["You are applicable for a loan.", "You are not applicable for a loan."])
+        argView.latent_continuous_target("applicability", "inapplicability", [1, -1])
 
         # set a backing
         argView.backing("Supported by Sophia Hadash, MSc from Jheronimus Academy of Data Science.")
