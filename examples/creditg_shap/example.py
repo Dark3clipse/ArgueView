@@ -39,6 +39,12 @@ class ArgueViewExample:
         r = requests.get(endpoint, headers=headers, verify=False)
         if r.status_code == 200:
             loads = json.loads(r.text)
+            for f in loads['data_features']['feature']:
+                f['index'] = int(f['index'])
+                f['is_target'] = bool(f['is_target'])
+                f['is_ignore'] = bool(f['is_ignore'])
+                f['is_row_identifier'] = bool(f['is_row_identifier'])
+                f['number_of_missing_values'] = bool(f['number_of_missing_values'])
             return loads
         else:
             return ""
