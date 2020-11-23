@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img alt="ArgueView" src="https://raw.githubusercontent.com/SophiaHadash/ArgueView/master/screenshots/logo.svg" width="50%" />
+  <img href="https://github.com/SophiaHadash/ArgueView" alt="ArgueView" src="https://raw.githubusercontent.com/SophiaHadash/ArgueView/master/screenshots/logo.svg" width="50%" />
 <p>
 
 --- 
