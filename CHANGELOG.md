@@ -16,3 +16,6 @@
 ### v0.1.5
  - fix critical error with error checking
  - add json exported pretty-print option
+
+### v0.1.6
+ - fix data types of openml features in examples
