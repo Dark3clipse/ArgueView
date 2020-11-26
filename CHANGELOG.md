@@ -19,3 +19,7 @@
 
 ### v0.1.6
  - fix data types of openml features in examples
+ 
+### v0.1.7
+ - fix data types of openml features in one example
+ - fix key names of labels of latent continuous target

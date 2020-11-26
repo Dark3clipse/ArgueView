@@ -41,7 +41,7 @@ class ArgueViewExample:
                 f['is_target'] = bool(f['is_target'])
                 f['is_ignore'] = bool(f['is_ignore'])
                 f['is_row_identifier'] = bool(f['is_row_identifier'])
-                f['number_of_missing_values'] = bool(f['number_of_missing_values'])
+                f['number_of_missing_values'] = int(f['number_of_missing_values'])
             return loads
         else:
             return ""

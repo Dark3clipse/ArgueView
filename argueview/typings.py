@@ -1,3 +1,4 @@
+import enum
 import textwrap
 from random import random
 from typing import List, Union, NewType, Tuple
@@ -272,8 +273,20 @@ class Explanation(DummyUpdater):
             print('Unexplained contribution: ' + str(self.explanation.base))
 
 
+class Framing(enum.Enum):
+    positive = 'positive'
+    negative = 'negative'
+    original = 'original'
+
+
+class LatentContinuousTargetDisplay(enum.Enum):
+    positive = 'positive'
+    negative = 'negative'
+    none = 'none'
+
 Ground = NewType('Ground', List[str])
 Grounds = NewType('Grounds', List[Ground])
 GroundVarByClass = NewType('GroundVarByClass', List[str])
 GroundsVarByClass = NewType('GroundsVarByClass', List[GroundVarByClass])
 FeatureImportance = NewType('FeatureImportance', List[Tuple[int, float]])
+

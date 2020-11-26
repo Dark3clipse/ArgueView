@@ -58,8 +58,8 @@ class ArgueView:
         if hasattr(self, '_classes') and len(self._classes) != len(mapping):
             raise Exception('Length of mapping should match the number of classes.')
         self._lct = LatentContinuousTarget({
-            label: label,
-            anti_label: anti_label
+            "label": label,
+            "anti_label": anti_label
         })
         self._lct.mapping = mapping
 
