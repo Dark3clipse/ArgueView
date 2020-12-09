@@ -1,5 +1,6 @@
 #!/bin/python
 from typing import Dict, Tuple
+from anchor.anchor_explanation import AnchorExplanation
 from shap import Explanation
 from argueview.typings import FeatureImportance, Case
 import numpy as np
@@ -37,3 +38,9 @@ def feature_importance_from_shap(shap_values: Explanation, case: Case) -> Tuple[
     unexplained = shap_values_for_class[case.id].base_values
 
     return feature_importance, unexplained
+
+
+def feature_importance_from_anchor(explanation: AnchorExplanation, case: Case) -> Tuple[FeatureImportance, float]:
+    """not implemented"""
+    fi=[]
+    return fi, 0

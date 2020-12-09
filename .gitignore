@@ -12,3 +12,4 @@ argueview.egg-info
 build
 dist
 wheelhouse
+.ipynb_checkpoints/

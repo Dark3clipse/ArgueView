@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 setup(
     install_requires=["numpy==1.19.4", "scipy==1.5.4"],
     name="argueview",
-    version="0.1.6",
+    version="0.1.7",
     author="Sophia Hadash",
     author_email="s.hadash@tue.nl",
     description="ArgueView is a tool for generating text-based presentations for machine-learning predictions and feature-importance based explanation tools. The tool makes use of Toulmin's model of argumentation for structuring the text-based explanations.",

@@ -23,3 +23,6 @@
 ### v0.1.7
  - fix data types of openml features in one example
  - fix key names of labels of latent continuous target
+ - bump argueview-js version to 0.3.1
+ - finalize feature list visualizer
+ 

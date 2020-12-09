@@ -4,15 +4,15 @@ from argueview.typings import Explanation, LatentContinuousTargetDisplay, Framin
 from argueview.visualizers import initjs, html_err_msg
 
 
-def FeatureListVisualizer(explanation: Explanation, framing: Framing = "positive", lct: LatentContinuousTargetDisplay = "positive") -> None:
+def FeatureListVisualizer(explanation: Explanation, framing: Framing = "positive", lct: LatentContinuousTargetDisplay = "label", threshold: float = 0) -> None:
     next(initjs())
     eid = "vis-" + str(random())
     display(HTML("<div id='{id}'>{err_msg}</div>".format(id=eid, err_msg=html_err_msg())))
     display(Javascript("""
     if (window.argueview) {{
         window.ReactDom.render(
-            window.React.createElement(window.argueview.FeatureListVisualizer, {{explanation: {data}, framing: {framing}, lct: {lct}}}),
+            window.React.createElement(window.argueview.FeatureListVisualizer, {{explanation: {data}, framing: "{f}", lct: "{l}", threshold: {t}}}),
             document.getElementById('{id}')
         );
     }}
-    """.format(id=eid, data=explanation.serialize(), framing=framing, lct=lct)))
+    """.format(id=eid, data=explanation.serialize(), f=framing, l=lct, t=threshold)))

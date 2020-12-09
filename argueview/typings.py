@@ -280,8 +280,8 @@ class Framing(enum.Enum):
 
 
 class LatentContinuousTargetDisplay(enum.Enum):
-    positive = 'positive'
-    negative = 'negative'
+    positive = 'label'
+    negative = 'anti-label'
     none = 'none'
 
 Ground = NewType('Ground', List[str])
