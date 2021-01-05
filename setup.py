@@ -59,7 +59,7 @@ setup(
         "zipp==3.4.0; python_version >= '3.6'",
     ],
     name="argueview",
-    version="0.1.7",
+    version="0.1.8",
     author="Sophia Hadash",
     author_email="s.hadash@tue.nl",
     description="ArgueView is a tool for generating text-based presentations for machine-learning predictions and feature-importance based explanation tools. The tool makes use of Toulmin's model of argumentation for structuring the text-based explanations.",

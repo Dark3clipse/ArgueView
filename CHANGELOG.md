@@ -26,3 +26,5 @@
  - bump argueview-js version to 0.3.1
  - finalize feature list visualizer
  
+### v0.1.8
+ - added support for omitting features in the FeatureListVisualizer.
