@@ -11,7 +11,7 @@ def feature_importance_from_lime(explanation: Dict[int, FeatureImportance], case
     # invert feature contributions when they are negatively framed w.r.t. decision-class
     for i in range(0, len(explanation[1])):
         v = list(explanation[1][i])
-        v[1] = -v[1]
+        # v[1] = -v[1]
         explanation[1][i] = tuple(v)
 
     # extract feature contribution map
