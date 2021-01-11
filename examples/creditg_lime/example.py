@@ -209,8 +209,9 @@ class ArgueViewExample:
              "The amount of your credits does not give us confidence in your capabilities."],
             ["Your current employment responsibilities supports our confidence in your capabilities.",
              "Your current employment responsibilities give us less confidence in your capabilities."],
-            ["The number of people that are liable to provide maintenance for gives us confidence in your capabilities.",
-            "The number of people that are liable to provide maintenance for does not give us confidence in your capabilities."],
+            [
+                "The number of people that are liable to provide maintenance for gives us confidence in your capabilities.",
+                "The number of people that are liable to provide maintenance for does not give us confidence in your capabilities."],
             ["The <> telephone gives us confidence in your capabilities.",
              "The <> telephone does not give us confidence in your capabilities."],
             ["Because you are <>a foreign worker, we have more confidence in your capabilities.",
