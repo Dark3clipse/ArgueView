@@ -28,3 +28,8 @@
  
 ### v0.1.8
  - added support for omitting features in the FeatureListVisualizer.
+
+### v0.2.0
+ - added support for bar visualization within FeatureListVisualizer.
+ - updated screenshots
+ - fixed output for negative and neutral decision-classes
