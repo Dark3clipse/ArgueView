@@ -195,11 +195,13 @@ class Explanation(DummyUpdater):
         if plain:
             print('Explanation')
             print('class: ' + dclass)
-            print('leading rationale:' + lrat)
+            if lrat and len(lrat)>0:
+                print('leading rationale:' + lrat)
             print(
                 'qualifier: ' + "The class '" + dclass + "' is {:.0f}% more certain than the other possible classes.".format(
                     100 * self.case.qualifier()))
-            print('backing: ' + self.backing)
+            if hasattr(self, 'backing') and len(self.backing) > 0:
+                print('backing: ' + self.backing)
             print()
             for i in range(0, len(self.case.sources)):
                 print('Source: ' + self.data.sources[i].name)
@@ -227,10 +229,16 @@ class Explanation(DummyUpdater):
             str_pre = '|  '
             str_post = '  |'
             str_class = Color.BOLD + 'class: ' + Color.END + dclass
-            str_lrat = Color.BOLD + 'leading rationale: ' + Color.END + lrat
+            if lrat and len(lrat) > 0:
+                str_lrat = Color.BOLD + 'leading rationale: ' + Color.END + lrat
+            else:
+                str_lrat = ""
             str_qualifier = Color.BOLD + "qualifier: " + Color.END + "The class '" + dclass + "' is {:.0f}% more certain than the other possible classes.".format(
                 100 * self.case.qualifier())
-            str_backing = Color.BOLD + 'backing: ' + Color.END + self.backing
+            if hasattr(self, 'backing') and len(self.backing) > 0:
+                str_backing = Color.BOLD + 'backing: ' + Color.END + self.backing
+            else:
+                str_backing = ""
 
             # print explanation
             max_length = 80
@@ -238,9 +246,11 @@ class Explanation(DummyUpdater):
             str_max_length = min(max_length, max(len(str_class), len(str_lrat), len(str_qualifier), len(str_backing)))
             print('\n' + str_header + '-' * (str_max_length - len(str_header) + len(str_pre) + len(str_post)))
             self._print_multiline(str_class, str_pre, str_post, str_max_length, max_length, cl)
-            self._print_multiline(str_lrat, str_pre, str_post, str_max_length, max_length, cl)
+            if lrat and len(lrat) > 0:
+                self._print_multiline(str_lrat, str_pre, str_post, str_max_length, max_length, cl)
             self._print_multiline(str_qualifier, str_pre, str_post, str_max_length, max_length, cl)
-            self._print_multiline(str_backing, str_pre, str_post, str_max_length, max_length, cl)
+            if hasattr(self, 'backing') and len(self.backing) > 0:
+                self._print_multiline(str_backing, str_pre, str_post, str_max_length, max_length, cl)
             print('-' * (str_max_length + len(str_pre) + len(str_post)) + '\n')
 
             for i in range(0, len(self.case.sources)):

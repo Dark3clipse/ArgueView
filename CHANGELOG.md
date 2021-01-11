@@ -33,3 +33,6 @@
  - added support for bar visualization within FeatureListVisualizer.
  - updated screenshots
  - fixed output for negative and neutral decision-classes
+
+### v0.2.1
+ - grounds and backing are now optional.

@@ -103,6 +103,9 @@ class ArgueView:
         :return: A compiled rationale for the contribution of `feature` to the decision-class. Based on the grounds provided in ArgueView.grounds()
         """
 
+        if not hasattr(self, '_grounds') or not self._grounds:
+            return ""
+
         ground = self._grounds[feature][decision]
         feature_value = int(self._case.sources[source].features[feature].value)
         options = self._grounds_vars[feature]
@@ -146,13 +149,13 @@ class ArgueView:
         """
 
         pre = 'cannot generate explanation: '
-        if not self._classes:
+        if not hasattr(self, '_classes') or not self._classes:
             raise Exception(pre+'no classes defined. Use ArgueView.classes to set your classes.')
-        if not self._grounds:
-            raise Exception(pre+'no grounds defined. Use ArgueView.grounds to set your grounds.')
-        if not self._backing:
+        if not hasattr(self, '_grounds') or not self._grounds:
+            print('Warning: Generating explanation without grounds.')
+        if not hasattr(self, '_backing') or not self._backing:
             print('Warning: Generating explanation without a backing.')
-        if not self._sources or len(self._sources) <= 0:
+        if not hasattr(self, '_sources') or not self._sources or len(self._sources) <= 0:
             raise Exception(pre+'no data sources defined. Use ArgueView.add_data_source to add a data source.')
 
         if not isinstance(feature_importance[0], list):
@@ -165,7 +168,7 @@ class ArgueView:
         self._generate_explanation_partial()
         _gen = Explanation()
 
-        if self._backing:
+        if hasattr(self, '_backing') and self._backing:
             _gen.backing = self._backing
 
         _gen.data = Data()

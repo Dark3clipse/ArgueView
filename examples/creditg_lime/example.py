@@ -162,7 +162,7 @@ class ArgueViewExample:
         argView.latent_continuous_target("applicability", "inapplicability", [1, -1])
 
         # set a backing
-        argView.backing("Supported by Sophia Hadash, MSc from Jheronimus Academy of Data Science.")
+        #argView.backing("Supported by Sophia Hadash, MSc from Jheronimus Academy of Data Science.")
 
         # add the data source
         argView.add_data_source(Source({
@@ -176,72 +176,7 @@ class ArgueViewExample:
             "features": self.dataset.feature_data.feature
         }))
 
-        argView.grounds([
-            ["You have a sufficient amount on your checking account.",
-             "You have an insufficient amount on your checking account."],
-            ["We believe the duration of the credit is appropriate.",
-             "We believe the duration of the credit is not appropriate."],
-            ["Your credit history gives us confidence in your capabilities.",
-             "Your credit history does not give us confidence in your capabilities."],
-            ["We are interested in providing loans for <>.",
-             "We are generally not interested in providing loans for <>."],
-            ["Your credit amount gives us confidence in your capabilities.",
-             "Your credit amount does not give us sufficient confidence in your capabilities."],
-            ["Your savings give us confidence in your capabilities.",
-             "Your savings do not give us confidence in your capabilities."],
-            ["The duration of your current employment gives us confidence in your capabilities.",
-             "The duration of your current employment does not give us confidence in your capabilities."],
-            ["With the requested loan included, your installment rate is below the threshold.",
-             "The requested loan would increase your EMI over the threshold."],
-            ["We have more confidence in providing loans to <> in general.",
-             "We have less confidence in providing loans to <> in general."],
-            ["<> gives us confidence in your capabilities.",
-             "<> does not give us sufficient confidence in your capabilities."],
-            ["The duration of your current residence gives us confidence in your capabilities.",
-             "The duration of your current residence does not give us confidence in your capabilities."],
-            ["<> gives us confidence in your capabilities.", "<> does not give us confidence in your capabilities."],
-            ["Your age gives us confidence in your capabilities.",
-             " Your age does not give us confidence in your capabilities."],
-            ["<> gives us confidence in your capabilities.", "<> does not give us confidence in your capabilities."],
-            ["Living in <> increases the confidence we have in your capabilities.",
-             "Living in <> decreases the confidence we have in your capabilities."],
-            ["The amount of your credits gives us confidence in your capabilities.",
-             "The amount of your credits does not give us confidence in your capabilities."],
-            ["Your current employment responsibilities supports our confidence in your capabilities.",
-             "Your current employment responsibilities give us less confidence in your capabilities."],
-            ["The number of people that are liable to provide maintenance for gives us confidence in your capabilities.",
-            "The number of people that are liable to provide maintenance for does not give us confidence in your capabilities."],
-            ["The <> telephone gives us confidence in your capabilities.",
-             "The <> telephone does not give us confidence in your capabilities."],
-            ["Because you are <>a foreign worker, we have more confidence in your capabilities.",
-             "Because you are <>a foreign worker, we have less confidence in your capabilities."],
-        ], [
-            [],
-            [],
-            [],
-            ["the purpose of buying a new car", "the purpose of buying a used car",
-             "the purpose of buying furniture or equipment", "the purpose of buying a radio or tv",
-             "the purpose of buying domestic appliance", "the purpose of making repairs",
-             "the purpose of gaining education", "the purpose of paying for vacation", "the purpose of retraining",
-             "the purpose of investing in business", "unspecified purposes"],
-            [],
-            [],
-            [],
-            [],
-            ["divorced or separated males", "females", "single males", "married or widowed males", "single females"],
-            ["The lack of a co-applicant or guarantor", "Your co-applicant", "Your guarantor"],
-            [],
-            ["Your real-estate", "Your life insurance", "The fact that you own a car", "The absence of known property"],
-            [],
-            ["Your installment plan at a bank", "Your installment plan at a store",
-             "Having no other installment plans"],
-            ["rented housing", "owned housing", "free housing"],
-            [],
-            [],
-            [],
-            ["lack of ownership of a", "ownership of a"],
-            ["", "not "],
-        ])
+
 
         return argView
 
