@@ -32,7 +32,7 @@ class Feature(DummyUpdater):
     nominal_value: List[str]
     number_of_missing_values: int
 
-    def __setitem__(self, key:str, value:any) -> None:
+    def __setitem__(self, key: str, value: any) -> None:
         self[key] = value
 
 
@@ -170,14 +170,15 @@ class Explanation(DummyUpdater):
         else:
             return val
 
-    def _print_multiline(self, inpstr: str, str_pre: str, str_post: str, str_max_length: int, max_length: int, cl: int) -> None:
+    def _print_multiline(self, inpstr: str, str_pre: str, str_post: str, str_max_length: int, max_length: int,
+                         cl: int) -> None:
         if len(inpstr) - cl <= max_length:
             print(str_pre + inpstr + ' ' * (str_max_length - len(inpstr) + cl) + str_post)
         else:
             inpstr_lines = textwrap.wrap(inpstr, max_length)
             for i in range(0, len(inpstr_lines)):
                 print(str_pre + inpstr_lines[i] + ' ' * (
-                            str_max_length - len(inpstr_lines[i]) + (cl if i == 0 else 0)) + str_post)
+                        str_max_length - len(inpstr_lines[i]) + (cl if i == 0 else 0)) + str_post)
 
     def print(self, plain=False) -> None:
 
@@ -193,13 +194,15 @@ class Explanation(DummyUpdater):
 
         if plain:
             print('Explanation')
-            print('class: '+dclass)
-            print('leading rationale:'+lrat)
-            print('qualifier: '+"The class '" + dclass + "' is {:.0f}% more certain than the other possible classes.".format(100 * self.case.qualifier()))
-            print('backing: '+self.backing)
+            print('class: ' + dclass)
+            print('leading rationale:' + lrat)
+            print(
+                'qualifier: ' + "The class '" + dclass + "' is {:.0f}% more certain than the other possible classes.".format(
+                    100 * self.case.qualifier()))
+            print('backing: ' + self.backing)
             print()
             for i in range(0, len(self.case.sources)):
-                print('Source: '+self.data.sources[i].name)
+                print('Source: ' + self.data.sources[i].name)
                 names = []
                 vals = []
                 cont = []
@@ -259,7 +262,7 @@ class Explanation(DummyUpdater):
                 content = []
                 for j in range(0, len(names)):
                     content.append(names[j] + ' ' * (names_max_length - len(names[j])) + ' = ' + vals[j] + ' ' * (
-                                vals_max_length - len(vals[j])) + ' , contribution = ' + cont[j])
+                            vals_max_length - len(vals[j])) + ' , contribution = ' + cont[j])
                 str_max_length = max(map(lambda x: len(x), content))
 
                 # sort based on contribution
@@ -284,9 +287,14 @@ class LatentContinuousTargetDisplay(enum.Enum):
     negative = 'anti-label'
     none = 'none'
 
+
+class FeatureListVisualizationType(enum.Enum):
+    badge = 'badge'
+    bar = 'bar'
+
+
 Ground = NewType('Ground', List[str])
 Grounds = NewType('Grounds', List[Ground])
 GroundVarByClass = NewType('GroundVarByClass', List[str])
 GroundsVarByClass = NewType('GroundsVarByClass', List[GroundVarByClass])
 FeatureImportance = NewType('FeatureImportance', List[Tuple[int, float]])
-
