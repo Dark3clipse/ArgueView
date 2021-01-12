@@ -39,7 +39,8 @@ class ArgueView:
         :return:
         """
         if hasattr(self, '_lct') and len(self._lct.mapping) != len(classes):
-            raise Exception('The number of classes should match the length of the defined latent continuous target mapping.')
+            raise Exception(
+                'The number of classes should match the length of the defined latent continuous target mapping.')
         self._classes = classes
 
     def latent_continuous_target(self, label: str, anti_label: str, mapping: List[float]) -> None:
@@ -89,21 +90,39 @@ class ArgueView:
         self._grounds_vars = grounds_var_by_class
 
     def add_data_source(self, source: Source) -> None:
+        """Add a data source to ArgueView. The data source describes the data origin and contents. It should follow the format defined in `Source`.
+
+        :param  source: The data source description.
+        :return:
+        """
+
         self._sources.append(source)
         if not isinstance(source.features[0], Feature):
             for i in range(0, len(source.features)):
-                self._sources[len(self._sources)-1].features[i] = Feature(self._sources[len(self._sources)-1].features[i])
+                self._sources[len(self._sources) - 1].features[i] = Feature(
+                    self._sources[len(self._sources) - 1].features[i])
 
     def _compile(self, decision: int, source: int, feature: int) -> str:
         """Compiles a rationale for a decision from a specific feature.
 
         :param  decision: The decision-class.
-        :param  source: Data source.
-        :param  feature: Feature number.
+        :param  source: Data source index.
+        :param  feature: Feature index.
         :return: A compiled rationale for the contribution of `feature` to the decision-class. Based on the grounds provided in ArgueView.grounds()
         """
 
-        if not hasattr(self, '_grounds') or not self._grounds:
+        if not hasattr(self, '_grounds') or \
+                not self._grounds or \
+                feature >= len(self._grounds) or \
+                source >= len(self._sources) or \
+                not hasattr(self, '_case') or \
+                not self._case or \
+                source >= len(self._case.sources) or \
+                feature >= len(self._case.sources[source].features) or \
+                not hasattr(self._case.sources[source].features[feature], 'value') or \
+                not hasattr(self, '_grounds_vars') or \
+                feature >= len(self._grounds_vars) or \
+                decision >= len(self._grounds[feature]):
             return ""
 
         ground = self._grounds[feature][decision]
@@ -114,6 +133,11 @@ class ArgueView:
         return ground.replace("<>", options[feature_value])
 
     def _generate_explanation_partial(self) -> None:
+        """Splits the feature contributions into support, attack, and base.
+
+        :return:
+        """
+
         positive = []
         negative = []
         decision = self._case.decision_class()
@@ -134,7 +158,8 @@ class ArgueView:
             "base": float(self._unexplained)
         })
 
-    def generate(self, case: Case, feature_importance: Union[FeatureImportance, List[FeatureImportance]], unexplained: float = 0) -> Explanation:
+    def generate(self, case: Case, feature_importance: Union[FeatureImportance, List[FeatureImportance]],
+                 unexplained: float = 0) -> Explanation:
         """Generate an explanation for a case based on the given context.
 
         Generates an explanation for a specific case. This method uses the information provided by other methods and
@@ -150,18 +175,18 @@ class ArgueView:
 
         pre = 'cannot generate explanation: '
         if not hasattr(self, '_classes') or not self._classes:
-            raise Exception(pre+'no classes defined. Use ArgueView.classes to set your classes.')
+            raise Exception(pre + 'no classes defined. Use ArgueView.classes to set your classes.')
         if not hasattr(self, '_grounds') or not self._grounds:
             print('Warning: Generating explanation without grounds.')
         if not hasattr(self, '_backing') or not self._backing:
             print('Warning: Generating explanation without a backing.')
         if not hasattr(self, '_sources') or not self._sources or len(self._sources) <= 0:
-            raise Exception(pre+'no data sources defined. Use ArgueView.add_data_source to add a data source.')
+            raise Exception(pre + 'no data sources defined. Use ArgueView.add_data_source to add a data source.')
 
         if not isinstance(feature_importance[0], list):
-            self._fimportance = [feature_importance] # single list -> single source case
+            self._fimportance = [feature_importance]  # single list -> single source case
         else:
-            self._fimportance = feature_importance # input properly formatted
+            self._fimportance = feature_importance  # input properly formatted
         self._unexplained = unexplained
 
         self._case = case
