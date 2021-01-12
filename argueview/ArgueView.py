@@ -102,15 +102,33 @@ class ArgueView:
                 self._sources[len(self._sources) - 1].features[i] = Feature(
                     self._sources[len(self._sources) - 1].features[i])
 
-    def _compile(self, decision: int, source: int, feature: int) -> str:
+    def _ground_index(self, support: bool) -> int:
+        """Determines the index of the ground to be shown when a feature supports or attacks the decision-class.
+
+        :param  support: Whether a feature supports the decision class.
+        :return: Ground index.
+        """
+
+        decision = self._case.decision_class()
+        if support:
+            return decision
+        else:
+            classes = len(self._classes)
+            for x in range(classes-1, -1, -1):
+                if x != decision:
+                    return x
+            return 0
+
+    def _compile(self, source: int, feature: int, support: bool) -> str:
         """Compiles a rationale for a decision from a specific feature.
 
-        :param  decision: The decision-class.
         :param  source: Data source index.
         :param  feature: Feature index.
+        :param  support: Whether the feature supports the decision class.
         :return: A compiled rationale for the contribution of `feature` to the decision-class. Based on the grounds provided in ArgueView.grounds()
         """
 
+        ground_index = self._ground_index(support)
         if not hasattr(self, '_grounds') or \
                 not self._grounds or \
                 feature >= len(self._grounds) or \
@@ -122,10 +140,11 @@ class ArgueView:
                 not hasattr(self._case.sources[source].features[feature], 'value') or \
                 not hasattr(self, '_grounds_vars') or \
                 feature >= len(self._grounds_vars) or \
-                decision >= len(self._grounds[feature]):
+                ground_index >= len(self._grounds[feature]):
             return ""
 
-        ground = self._grounds[feature][decision]
+        ground = self._grounds[feature][ground_index]
+
         feature_value = int(self._case.sources[source].features[feature].value)
         options = self._grounds_vars[feature]
         if feature_value >= len(options):
@@ -140,17 +159,17 @@ class ArgueView:
 
         positive = []
         negative = []
-        decision = self._case.decision_class()
         for i in range(0, len(self._sources)):
             for t in self._fimportance[i]:
                 valence = negative
                 if t[1] > 0:
                     valence = positive
+                contribution = float(t[1])
                 valence.append(FeatureExplanation({
                     "source": i,
                     "feature": int(t[0]),
-                    "contribution": float(t[1]),
-                    "value": self._compile(decision, i, t[0])
+                    "contribution": contribution,
+                    "value": self._compile(i, t[0], contribution >= 0)
                 }))
         self._expPartial = ExplanationPartial({
             "support": positive,
