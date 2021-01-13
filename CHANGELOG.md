@@ -36,3 +36,8 @@
 
 ### v0.2.1
  - grounds and backing are now optional.
+
+### v0.2.2
+ - interactivity is now optional
+ - fixed leading rationale in Toulmin visualizer
+ - bug fixes
