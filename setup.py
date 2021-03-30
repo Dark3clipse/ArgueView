@@ -37,7 +37,7 @@ setup(
         "preshed==3.0.5",
         "prompt-toolkit==3.0.8; python_full_version >= '3.6.1'",
         "ptyprocess==0.6.0",
-        "pygments==2.7.3; python_version >= '3.5'",
+        "pygments==2.7.4; python_version >= '3.5'",
         "pyparsing==2.4.7; python_version >= '2.6' and python_version not in '3.0, 3.1, 3.2, 3.3'",
         "python-dateutil==2.8.1; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
         "pywavelets==1.1.1; python_version >= '3.5'",
