@@ -21,7 +21,7 @@ setup(
         "ipython==7.19.0",
         "ipython-genutils==0.2.0",
         "jedi==0.17.2; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4'",
-        "joblib==0.17.0; python_version >= '3.6'",
+        "joblib==1.2.0; python_version >= '3.6'",
         "jsonpickle==1.4.1",
         "kiwisolver==1.3.1; python_version >= '3.6'",
         "lime==0.2.0.1; python_version >= '3.5'",
