@@ -10,7 +10,7 @@ setup(
         "backcall==0.2.0",
         "blis==0.7.4; python_version >= '3.6'",
         "catalogue==1.0.0; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
-        "certifi==2020.12.5",
+        "certifi==2022.12.7",
         "chardet==3.0.4",
         "cycler==0.10.0",
         "cymem==2.0.5",
